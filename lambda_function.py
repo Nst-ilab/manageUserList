@@ -37,9 +37,9 @@ def lambda_handler(event, context):
     if user_id in user_id_list:
         already_exists = "yes"
     
-    logger.info(already_exists)
     # user_idが登録されていなければ登録する
     # user_idが登録されていれば削除する
+    logger.info(already_exists)
     if already_exists == "no":
         append_user(target_list,user_id)
         response_message = target_list+"にあなたを登録しました。"
@@ -50,44 +50,40 @@ def lambda_handler(event, context):
         return None
     return {"message" : response_message}
 
-# dynamoDBにデータを登録する関数
-def append_user(item,user_id):
+
+def append_user(user_list,user_id):
     # listを取得
-    user_list = get_data(item)
+    user_list_data = get_data(user_list)
     # user_idを追加
-    user_list.append(user_id)
-
-    response = clientLambda.invoke(
-        #storageGetサービスを呼び出し
-        FunctionName = 'cloud9-storageDao-storageSet-1NAOAUOZ4HX19',
-        # RequestResponse = 同期、Event = 非同期 で実行できます
-        InvocationType = 'RequestResponse',
-        # byte形式でPayloadを作って渡す
-        Payload = json.dumps({"key":item, "value": user_list}).encode("UTF-8")
-    )
-    logger.info(response)
+    user_list_data.append(user_id)
+    # db書き込み
+    set_data(user_list,user_list_data)
     return None
 
-# dynamoDBからデータを削除する関数
-def remove_user(item,user_id):
+
+def remove_user(user_list,user_id):
     # listを取得
-    user_list = get_data(item)
+    user_list_data = get_data(user_list)
     # user_idを削除
-    user_list.remove(user_id)
-    
+    user_list_data.remove(user_id)
+    # db書き込み
+    set_data(user_list,user_list_data)
+    return None
+
+
+def set_data(item,data):
     response = clientLambda.invoke(
         #storageGetサービスを呼び出し
         FunctionName = 'cloud9-storageDao-storageSet-1NAOAUOZ4HX19',
         # RequestResponse = 同期、Event = 非同期 で実行できます
         InvocationType = 'RequestResponse',
         # byte形式でPayloadを作って渡す
-        Payload = json.dumps({"key":item, "value": user_list}).encode("UTF-8")
+        Payload = json.dumps({"key":item, "value": data}).encode("UTF-8")
     )
     logger.info(response)
     return None
 
 
-# dynamoDBからデータを取得する関数
 def get_data(item):
     payload={}
     response = clientLambda.invoke(
