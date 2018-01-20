@@ -1,0 +1,183 @@
+{
+    "manageUserList": {
+        "lambda": {
+            "lineMessage": {
+                "events": [
+                    {
+                        "type": "message",
+                        "replyToken": "9b821803acd249298d9a2580aefbcd17",
+                        "source": {
+                            "userId": "U97eb2ee4fa944bc942f45754586b3b4f",
+                            "type": "user"
+                        },
+                        "timestamp": 1515066504354,
+                        "message": {
+                            "type": "text",
+                            "id": "7256057856562",
+                            "text": "レシピ送信リスト"
+                        }
+                    }
+                ]
+            },
+            "analysedMessage": {
+                "sentences": [
+                    {
+                        "text": {
+                            "content": "å³ã®ç´ ãã¥ã¼ã¹",
+                            "beginOffset": -1
+                        },
+                        "sentiment": {
+                            "magnitude": 0.30000001192092896,
+                            "score": -0.30000001192092896
+                        }
+                    }
+                ],
+                "tokens": [
+                    {
+                        "text": {
+                            "content": "å³",
+                            "beginOffset": -1
+                        },
+                        "partOfSpeech": {
+                            "tag": "NOUN",
+                            "aspect": "ASPECT_UNKNOWN",
+                            "case": "CASE_UNKNOWN",
+                            "form": "FORM_UNKNOWN",
+                            "gender": "GENDER_UNKNOWN",
+                            "mood": "MOOD_UNKNOWN",
+                            "number": "NUMBER_UNKNOWN",
+                            "person": "PERSON_UNKNOWN",
+                            "proper": "NOT_PROPER",
+                            "reciprocity": "RECIPROCITY_UNKNOWN",
+                            "tense": "TENSE_UNKNOWN",
+                            "voice": "VOICE_UNKNOWN"
+                        },
+                        "dependencyEdge": {
+                            "headTokenIndex": 3,
+                            "label": "NN"
+                        },
+                        "lemma": "å³"
+                    },
+                    {
+                        "text": {
+                            "content": "ã®",
+                            "beginOffset": -1
+                        },
+                        "partOfSpeech": {
+                            "tag": "PRT",
+                            "aspect": "ASPECT_UNKNOWN",
+                            "case": "GENITIVE",
+                            "form": "FORM_UNKNOWN",
+                            "gender": "GENDER_UNKNOWN",
+                            "mood": "MOOD_UNKNOWN",
+                            "number": "NUMBER_UNKNOWN",
+                            "person": "PERSON_UNKNOWN",
+                            "proper": "NOT_PROPER",
+                            "reciprocity": "RECIPROCITY_UNKNOWN",
+                            "tense": "TENSE_UNKNOWN",
+                            "voice": "VOICE_UNKNOWN"
+                        },
+                        "dependencyEdge": {
+                            "headTokenIndex": 0,
+                            "label": "PRT"
+                        },
+                        "lemma": "ã®"
+                    },
+                    {
+                        "text": {
+                            "content": "ç´ ",
+                            "beginOffset": -1
+                        },
+                        "partOfSpeech": {
+                            "tag": "NOUN",
+                            "aspect": "ASPECT_UNKNOWN",
+                            "case": "CASE_UNKNOWN",
+                            "form": "FORM_UNKNOWN",
+                            "gender": "GENDER_UNKNOWN",
+                            "mood": "MOOD_UNKNOWN",
+                            "number": "NUMBER_UNKNOWN",
+                            "person": "PERSON_UNKNOWN",
+                            "proper": "NOT_PROPER",
+                            "reciprocity": "RECIPROCITY_UNKNOWN",
+                            "tense": "TENSE_UNKNOWN",
+                            "voice": "VOICE_UNKNOWN"
+                        },
+                        "dependencyEdge": {
+                            "headTokenIndex": 3,
+                            "label": "DEP"
+                        },
+                        "lemma": "ç´ "
+                    },
+                    {
+                        "text": {
+                            "content": "ãã¥ã¼ã¹",
+                            "beginOffset": -1
+                        },
+                        "partOfSpeech": {
+                            "tag": "NOUN",
+                            "aspect": "ASPECT_UNKNOWN",
+                            "case": "CASE_UNKNOWN",
+                            "form": "FORM_UNKNOWN",
+                            "gender": "GENDER_UNKNOWN",
+                            "mood": "MOOD_UNKNOWN",
+                            "number": "NUMBER_UNKNOWN",
+                            "person": "PERSON_UNKNOWN",
+                            "proper": "NOT_PROPER",
+                            "reciprocity": "RECIPROCITY_UNKNOWN",
+                            "tense": "TENSE_UNKNOWN",
+                            "voice": "VOICE_UNKNOWN"
+                        },
+                        "dependencyEdge": {
+                            "headTokenIndex": 3,
+                            "label": "ROOT"
+                        },
+                        "lemma": "ãã¥ã¼ã¹"
+                    }
+                ],
+                "entities": [
+                    {
+                        "mentions": [
+                            {
+                                "text": {
+                                    "content": "å³",
+                                    "beginOffset": -1
+                                },
+                                "type": "COMMON",
+                                "sentiment": null
+                            }
+                        ],
+                        "metadata": {},
+                        "name": "å³",
+                        "type": "OTHER",
+                        "salience": 0.5455387234687805,
+                        "sentiment": null
+                    },
+                    {
+                        "mentions": [
+                            {
+                                "text": {
+                                    "content": "ç´ ãã¥ã¼ã¹",
+                                    "beginOffset": -1
+                                },
+                                "type": "COMMON",
+                                "sentiment": null
+                            }
+                        ],
+                        "metadata": {},
+                        "name": "ç´ ãã¥ã¼ã¹",
+                        "type": "OTHER",
+                        "salience": 0.4544612467288971,
+                        "sentiment": null
+                    }
+                ],
+                "categories": [],
+                "documentSentiment": {
+                    "magnitude": 0.30000001192092896,
+                    "score": -0.30000001192092896
+                },
+                "language": "ja"
+            },
+            "image": ""
+        }
+    }
+}
