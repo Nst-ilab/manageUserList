@@ -41,37 +41,47 @@ def lambda_handler(event, context):
     # user_idが登録されていなければ登録する
     # user_idが登録されていれば削除する
     if already_exists == "no":
-        add_data(target_list,user_id)
+        append_user(target_list,user_id)
         response_message = target_list+"にあなたを登録しました。"
     elif already_exists == "yes":
-        del_data(target_list,user_id)
+        remove_user(target_list,user_id)
         response_message = target_list+"からあなたを削除しました。"
     else:
         return None
     return {"message" : response_message}
 
 # dynamoDBにデータを登録する関数
-def add_data(item,user_id):
+def append_user(item,user_id):
+    # listを取得
+    user_list = get_data(item)
+    # user_idを追加
+    user_list.append(user_id)
+
     response = clientLambda.invoke(
         #storageGetサービスを呼び出し
         FunctionName = 'cloud9-storageDao-storageSet-1NAOAUOZ4HX19',
         # RequestResponse = 同期、Event = 非同期 で実行できます
         InvocationType = 'RequestResponse',
         # byte形式でPayloadを作って渡す
-        Payload = json.dumps({"key":item, "value": user_id}).encode("UTF-8")
+        Payload = json.dumps({"key":item, "value": user_list}).encode("UTF-8")
     )
     logger.info(response)
     return None
 
 # dynamoDBからデータを削除する関数
-def del_data(item,user_id):
+def remove_user(item,user_id):
+    # listを取得
+    user_list = get_data(item)
+    # user_idを削除
+    user_list.remove(user_id)
+    
     response = clientLambda.invoke(
         #storageGetサービスを呼び出し
         FunctionName = 'cloud9-storageDao-storageSet-1NAOAUOZ4HX19',
         # RequestResponse = 同期、Event = 非同期 で実行できます
         InvocationType = 'RequestResponse',
         # byte形式でPayloadを作って渡す
-        Payload = json.dumps({"key":item, "value": user_id}).encode("UTF-8")
+        Payload = json.dumps({"key":item, "value": user_list}).encode("UTF-8")
     )
     logger.info(response)
     return None
@@ -79,6 +89,7 @@ def del_data(item,user_id):
 
 # dynamoDBからデータを取得する関数
 def get_data(item):
+    payload={}
     response = clientLambda.invoke(
         #storageGetサービスを呼び出し
         FunctionName = 'cloud9-storageDao-storageGet-SV2WOCWTIT0Z',
